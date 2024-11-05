@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../api-call.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-character-display',
@@ -11,7 +12,7 @@ import { ApiCallService } from '../api-call.service';
 export class CharacterDisplayComponent implements OnInit {
   characters: any[] = [];
 
-  constructor(private apiCallService: ApiCallService) {}
+  constructor(private apiCallService: ApiCallService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCharacters();
@@ -39,5 +40,9 @@ export class CharacterDisplayComponent implements OnInit {
       this.apiCallService.page
     );
     this.characters = data.items;
+  }
+
+  goToCharacterDetail(id: number) {
+    this.router.navigate([`/characters`, id]); // Navigate to /characters/:id
   }
 }

@@ -1,6 +1,6 @@
 <div class="characters">
   @for (item of characters; track item.name) {
-  <div class="character">
+  <div class="character" (click)="goToCharacterDetail(item.id)">
     <h1>{{ item.name }}</h1>
     <img src="{{ item.image }}" alt="" />
   </div>
