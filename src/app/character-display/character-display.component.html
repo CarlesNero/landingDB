@@ -1,0 +1,17 @@
+<div class="characters">
+  @for (item of characters; track item.name) {
+  <div class="character">
+    <h1>{{ item.name }}</h1>
+    <img src="{{ item.image }}" alt="" />
+  </div>
+  } @empty {
+  <div class="video-player">
+    <video src="./assets/goku-bachata.mp4" autoplay loop width="100%"></video>
+  </div>
+  }
+</div>
+
+<div class="buttons">
+  <button class="prev-btn" (click)="prevPage()">prev</button>
+  <button class="next-btn" (click)="nextPage()">next</button>
+</div>
