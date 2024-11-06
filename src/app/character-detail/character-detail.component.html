@@ -1,5 +1,62 @@
 <div id="character-info">
-  {{ character.id }}
-  {{ character.name }}
-  <img src="{{ character.image }}" alt="" />
+  <div class="character-image">
+    <img
+      class="image-principal"
+      src="{{ character.image }}"
+      alt="{{ character.name }}"
+    />
+    <div class="evolutions">
+      @for(evo of character.transformations; track
+      character.transformations.id){
+      <div class="evo">
+        <h4>
+          {{ evo.name }}
+        </h4>
+        <img src="{{ evo.image }}" alt="{{ evo.name }}" />
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="parent">
+    <div class="grid-stats div1">
+      <h4>Name</h4>
+      {{ character.name }}
+    </div>
+    <div class="grid-stats div2">
+      <h4>Descripción</h4>
+      {{ character.description }}
+    </div>
+    <div class="grid-stats div3">
+      <h4>Raza</h4>
+      {{ character.race }}
+    </div>
+    <div class="grid-stats div9">
+      <h4>Genero</h4>
+      {{ character.gender }}
+    </div>
+    <div class="grid-stats div10">
+      <h4>Ki</h4>
+      {{ character.ki }}
+
+      <h4>Max Ki</h4>
+      {{ character.maxKi }}
+    </div>
+    <div class="grid-stats div11">
+      <h4>Planeta de origen</h4>
+      {{ character.originPlanet.name }}
+      <div class="destroyed">
+        @if(character.originPlanet.isDestroyed ){
+        <h4 style="color: red">Destruido</h4>
+        }@else {
+        <h4 style="color: green">No destruido</h4>
+        }
+      </div>
+      <img src="{{ character.originPlanet.image }}" alt="" />
+    </div>
+    <div class="grid-stats div12">
+      <h4>Afiliación</h4>
+      {{ character.affiliation }}
+    </div>
+  </div>
 </div>
