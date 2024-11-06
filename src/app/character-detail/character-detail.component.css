@@ -105,6 +105,7 @@ li:first-child {
   gap: 1rem;
   width: 100%;
   overflow-y: scroll;
+  padding: 0.3rem;
 }
 
 .parent::-webkit-scrollbar {
@@ -173,43 +174,27 @@ li:first-child {
     grid-template-columns: 1fr;
   }
 
+  .character-image {
+    width: 100%;
+  }
+
   .parent {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    gap: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .div1 {
+    width: 100%;
   }
 
   .div2 {
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2;
-    grid-column-start: 1;
-    grid-row-start: 2;
+    height: fit-content;
   }
 
-  .div3 {
-    grid-column-start: 2;
-    grid-row-start: 1;
-  }
-
-  .div9 {
-    grid-row-start: 4;
-  }
-
+  .div3,
+  .div9,
   .div10 {
-    grid-row: span 3 / span 3;
-    grid-column-start: 2;
-    grid-row-start: 5;
-  }
-
-  .div11 {
-    grid-row: span 3 / span 3;
-    grid-column-start: 1;
-    grid-row-start: 5;
-  }
-
-  .div12 {
-    grid-column-start: 2;
-    grid-row-start: 4;
+    min-width: 33.3%;
   }
 }
