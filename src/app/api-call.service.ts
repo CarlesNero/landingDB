@@ -24,4 +24,11 @@ export class ApiCallService {
     const data = await response.json();
     return data;
   }
+  async fetchCharacterByName(name: string) {
+    const response = await fetch(
+      `https://dragonball-api.com/api/characters?name=${name}`
+    );
+    const data = await response.json();
+    return data;
+  }
 }

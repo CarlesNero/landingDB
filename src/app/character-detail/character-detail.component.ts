@@ -11,6 +11,7 @@ import { ApiCallService } from '../api-call.service';
 })
 export class CharacterDetailComponent {
   character: any;
+  title = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class CharacterDetailComponent {
     if (id) {
       const data = await this.apiCallService.fetchCharacterById(id); // Implement this method in ApiCallService
       this.character = data;
+      this.title = this.character.name;
     }
   }
 }
