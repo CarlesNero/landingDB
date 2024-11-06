@@ -2,7 +2,11 @@
   @for (item of characters; track item.name) {
   <div class="character" (click)="goToCharacterDetail(item.id)">
     <h1>{{ item.name }}</h1>
-    <img src="{{ item.image }}" alt="" />
+    <img
+      style="view-transition-name: image-main"
+      src="{{ item.image }}"
+      alt=""
+    />
   </div>
   } @empty {
   <div class="video-player">
