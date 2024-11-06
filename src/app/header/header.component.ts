@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../api-call.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -10,15 +10,15 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./header.component.css'],
   imports: [FormsModule],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   title = 'landingDragonBall';
   characterName: string = '';
   characterId: string = '';
 
   constructor(
     private apiCallService: ApiCallService,
-    private route: ActivatedRoute, // Para obtener parámetros de la URL
-    private router: Router // Para redirigir a una ruta
+    private route: ActivatedRoute, // Inyectar ActivatedRoute para los parámetros de la URL
+    private router: Router // Inyectar Router para navegación
   ) {}
 
   ngOnInit(): void {
@@ -27,13 +27,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       const id = params.get('id');
       if (id) {
         this.characterId = id; // Actualizar el ID del personaje cuando cambia en la URL
-        this.getCharacterDetails(); // Cargar los detalles del personaje
+        this.getCharacterDetails(); // Llamar al método para cargar los detalles del personaje
       }
     });
-  }
-
-  ngOnDestroy(): void {
-    // Aquí puedes limpiar cualquier suscripción si fuera necesario
   }
 
   // Método para manejar el envío del formulario
@@ -43,19 +39,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.getCharacterDetails();
   }
 
-  // Método para obtener los detalles del personaje
   async getCharacterDetails() {
     if (this.characterName) {
-      // Llamada al servicio para obtener los detalles del personaje por nombre
+      // Realizar la llamada al servicio para obtener los detalles del personaje por nombre
       const data = await this.apiCallService.fetchCharacterByName(
         this.characterName
       );
       if (data && data[0]) {
         this.characterId = data[0].id; // Establecer el ID del personaje desde la respuesta
-        // Redirigir a la ruta con el nuevo ID
-        this.router.navigate(['/characters', this.characterId]);
+        this.router.navigate(['/characters', this.characterId]); // Redirigir a la ruta con el nuevo ID
         console.log('Detalles del personaje:', data);
-        console.log('Character ID:', this.characterId);
+        console.log('character id:', this.characterId);
       } else {
         console.log('No se encontró el personaje.');
       }
