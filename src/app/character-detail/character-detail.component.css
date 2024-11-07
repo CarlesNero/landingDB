@@ -95,6 +95,12 @@ li:first-child {
   min-height: 200px;
   max-height: 200px;
   object-fit: contain;
+  user-select: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.evo img:hover {
+  transform: scale(1.2);
 }
 
 .evo h4 {
