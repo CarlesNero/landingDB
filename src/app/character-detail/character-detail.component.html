@@ -4,7 +4,7 @@
       class="image-principal"
       src="{{ character.image }}"
       alt="{{ character.name }}"
-      style="view-transition-name: image-main"
+      [style.view-transition-name]="'transition-image' + character.id"
     />
     <div class="evolutions">
       @for(evo of character.transformations; track

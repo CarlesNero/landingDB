@@ -3,7 +3,7 @@
   <div class="character" (click)="goToCharacterDetail(item.id)">
     <h1>{{ item.name }}</h1>
     <img
-      style="view-transition-name: image-main"
+      [style.view-transition-name]="'transition-image' + item.id"
       src="{{ item.image }}"
       alt=""
     />
